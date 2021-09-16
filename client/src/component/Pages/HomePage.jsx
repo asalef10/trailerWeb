@@ -8,13 +8,13 @@ import { MyContext } from '../../UseContext/UseContext';
 export default function HomePage() {
   const { setIsLogIn } = useContext(MyContext);
   const history = useHistory();
-  useEffect(() => {
-    if (!localStorage.getItem('token')) {
-      history.push('/LogIn');
-    } else {
-      setIsLogIn(true);
-    }
-  });
+  // useEffect(() => {
+  //   if (!localStorage.getItem('token')) {
+  //     history.push('/LogIn');
+  //   } else {
+  //     setIsLogIn(true);
+  //   }
+  // });
   const DisplayNoneTittleVideo = styled.div`
     width: 97vw;
     height: 8vh;
