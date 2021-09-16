@@ -3,7 +3,7 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import MyCard from './materialCard';
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import styled from 'styled-components';
   
 const HeaderTitle = styled.h1`
@@ -60,23 +60,26 @@ export default function MovieUpComing() {
   return (
     <>
       <HeaderTitle>soon... </HeaderTitle>
+      <Suspense fallback={<div>Loading</div>}>
+        
       <Slider {...settings}>
         {MovieComing.map((MovieComing) => {
           return (
             <MyCard
-              auto="10px"
-              imagUrl={
-                MovieComing
-                  ? MovieComing.poster_path
-                  : MovieComing.backdrop_path
-              }
-              title={MovieComing.title}
-              idMovie={MovieComing.id}
+            auto="10px"
+            imagUrl={
+              MovieComing
+              ? MovieComing.poster_path
+              : MovieComing.backdrop_path
+            }
+            title={MovieComing.title}
+            idMovie={MovieComing.id}
             />
-          );
-        })}
+            );
+          })}
       </Slider>
       ;
+          </Suspense>
     </>
   );
 }

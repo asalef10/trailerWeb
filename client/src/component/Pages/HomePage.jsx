@@ -1,20 +1,22 @@
+import React, { Suspense } from 'react';
 import PopularMovies from '../Fetchers/PopularMovies';
 import styled from 'styled-components';
-import MovieTopRated from '../Fetchers/movieTopRated';
-import MovieUpComing from './../Fetchers/MovieUpcoming';
 import { useHistory } from 'react-router-dom';
-import { useEffect, useContext } from 'react';
+import {  useContext, useLayoutEffect } from 'react';
 import { MyContext } from '../../UseContext/UseContext';
+const MovieTopRated = React.lazy(()=>import('../Fetchers/movieTopRated'))
+const MovieUpComing = React.lazy(()=>import('./../Fetchers/MovieUpcoming'))
 export default function HomePage() {
   const { setIsLogIn } = useContext(MyContext);
   const history = useHistory();
-  // useEffect(() => {
-  //   if (!localStorage.getItem('token')) {
-  //     history.push('/LogIn');
-  //   } else {
-  //     setIsLogIn(true);
-  //   }
-  // });
+  useLayoutEffect(() => {
+    if (!localStorage.getItem('token')) {
+      history.push('/LogIn');
+    } else {
+      setIsLogIn(true);
+      
+    }
+  },[]);
   const DisplayNoneTittleVideo = styled.div`
     width: 97vw;
     height: 8vh;
@@ -70,9 +72,11 @@ display: none;
       </WrapsVideo>
       <Container>
         <MoviesComponent>
+          <Suspense fallback={<p>Loading...</p>}>
           <MovieUpComing />
           <PopularMovies />
           <MovieTopRated />
+          </Suspense>
         </MoviesComponent>
       </Container>
     </>

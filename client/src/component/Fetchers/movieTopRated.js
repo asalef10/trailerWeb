@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -48,20 +48,22 @@ const settings = {
     <>
       <HeaderTitle>top Rated</HeaderTitle>
       <div style={{ padding: '10px 0' }}>
+        <Suspense fallback={<p>Loading...</p>}>
         <Slider {...settings}>
           {MovieTopRated.map((movieItem) => {
             return (
               <Card
-                imgUrl={
-                  movieItem.backdrop_path != null? movieItem.backdrop_path: movieItem.poster_path
-                }
+              imgUrl={
+                movieItem.backdrop_path != null? movieItem.backdrop_path: movieItem.poster_path
+              }
                 title={movieItem.title}
                 overview={movieItem.overview}
                 idMovie={movieItem.id}
-              />
-            );
+                />
+                );
           })}
         </Slider>
+                </Suspense>
       </div>
     </>
   );

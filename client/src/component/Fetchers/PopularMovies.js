@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Card from './Card';
 import Slider from 'react-slick';
@@ -45,7 +45,10 @@ export default function PopularMovies() {
   };
   return (
     <>
+      
       <HeaderTitle>Popular Movies</HeaderTitle>
+      <Suspense fallback={<div>Loading....</div>}>
+        
         <Slider {...settings}>
         {ArrayPopularMovie.map((movieItem) => {
           return (
@@ -62,6 +65,7 @@ export default function PopularMovies() {
             );
           })}
           </Slider>
+          </Suspense>
     </>
   );
 }
