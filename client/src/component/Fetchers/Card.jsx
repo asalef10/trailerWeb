@@ -1,9 +1,11 @@
-/* eslint-disable jsx-a11y/img-redundant-alt */
 import { Link } from 'react-router-dom';
 export default function MediaCard({ imgUrl, title, idMovie }) {
   return (
     <>
-      <div className="card" style={{ width: '18rem', backgroundColor: 'black' }}>
+      <div
+        className="card"
+        style={{ width: '18rem', backgroundColor: 'black' }}
+      >
         <div style={{ height: 'auto' }}>
           <img
             width="100%"

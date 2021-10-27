@@ -17,8 +17,7 @@ const userSchema = new Schema({
     default: Date.now,
   },
 });
-// module.exports = mongoose.model( 'users',userSchema)
-exports.usersModel = mongoose.model('users',userSchema)
+exports.usersModel = mongoose.model('users', userSchema)
 
 exports.genToken = (userID) =>{
   let token = jwt.sign({id:userID},'asiNetflix',{expiresIn:"60mins"} )
@@ -31,13 +30,4 @@ exports.validUser = (bodyData) =>{
     Password:joi.string().min(2).max(99).required()
   })
 return joiSchema.validate(bodyData) 
-
 }
-exports.validLogin = (bodyData) =>{
-let joiSchema = joi.object({
-  Email:joi.string().min(2).max(200).required(),
-  Password:joi.string().min(2).max(99).required()
-})
-return joiSchema.validate(bodyData);
-}
-

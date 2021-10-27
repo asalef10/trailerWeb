@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import {  useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Card from './Card';
 import Slider from 'react-slick';
@@ -45,7 +45,9 @@ export default function PopularMovies() {
   };
   return (
     <>
+      
       <HeaderTitle>Popular Movies</HeaderTitle>
+        
         <Slider {...settings}>
         {ArrayPopularMovie.map((movieItem) => {
           return (

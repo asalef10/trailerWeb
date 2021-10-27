@@ -7,9 +7,14 @@ export default function SearchMovie() {
   const { DataSearch } = useParams();
   const LinkSearch = `https://api.themoviedb.org/3/search/movie?api_key=f210f79a3dd1fbcf59c3d811da7bbe36&query=${DataSearch}`;
   const [valueSearch, setValueSearch] = useState([]);
-  const notFoundMovie = `Sorry The Movie Not Found `;
+  const notFoundMovie = `Sorry The Movie "${DataSearch}" Not Found `;
   const { setIsLogIn } = useContext(MyContext);
   const history = useHistory();
+  const NotFoundMovieStyled = styled.h1`
+  margin-left: 28%;
+    color: cornsilk;
+  
+  `
   useEffect(() => {
     if (!localStorage.getItem('token')) {
       history.push('/LogIn');
@@ -48,7 +53,7 @@ export default function SearchMovie() {
                 </>
               );
             })
-          : notFoundMovie}
+          : <NotFoundMovieStyled>{notFoundMovie}</NotFoundMovieStyled> }
       </FlexCard>
     </>
   );

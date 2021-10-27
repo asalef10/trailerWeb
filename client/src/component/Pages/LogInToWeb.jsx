@@ -1,12 +1,14 @@
 import { useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { MyContext } from '../../UseContext/UseContext';
+
 export default function LoginToWeb() {
   const [EmailUser, setEmailUser] = useState('');
   const [PasswordUser, setPasswordUser] = useState('');
   const [data, setData] = useState('');
   const history = useHistory();
   const { setIsLogIn } = useContext(MyContext);
+
   function LogInFunction(e) {
     e.preventDefault();
     const requestOptions = {
