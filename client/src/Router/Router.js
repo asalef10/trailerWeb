@@ -10,7 +10,7 @@ export default function AppRouter() {
   return (
     <>
       <React.Suspense fallback={<p>Loading</p>}>
-      <Switch>
+      <Switch>  
         <Route exact path="/">
           <HomePage />
         </Route>

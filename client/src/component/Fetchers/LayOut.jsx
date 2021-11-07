@@ -59,6 +59,7 @@ export default function LayOut({ children }) {
         )}
       </header>
       {children}
+      <h1>footer</h1>
     </>
   );
 }

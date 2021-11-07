@@ -1,24 +1,22 @@
-const dotenv = require('dotenv')
-dotenv.config()
+const dotenv = require('dotenv');
+dotenv.config();
 const express = require('express');
 const app = express();
 const PORT = process.env.PORT;
-const path = require('path')
-const cors = require('cors')
-app.use(cors())
-const DB = require('./DB/index')
-const userRouter = require('./rauting/userRauting')
-app.use(express.json())
+const path = require('path');
+const cors = require('cors');
+app.use(cors());
+const DB = require('./DB/index');
+const userRouter = require('./rauting/userRauting');
+app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
 
 app.listen(PORT || 8080, (err) => {
   if (err) console.log(err);
   console.log('work');
 });
 
-
-app.use('/user',userRouter)
+app.use('/user', userRouter);
 if (process.env.NODE_ENV === 'production') {
   //NODE_ENV משתנה סביבה מובנה
   app.use(express.static(path.join(__dirname, '../client/build')));

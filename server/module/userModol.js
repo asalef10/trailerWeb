@@ -29,5 +29,5 @@ exports.validUser = (bodyData) =>{
     Email:joi.string().min(2).max(200).required(),
     Password:joi.string().min(2).max(99).required()
   })
-return joiSchema.validate(bodyData) 
+return joiSchema.validate(bodyData)  
 }
